@@ -90,7 +90,7 @@
  
     .notfound h2 {
       font-family: cabin, sans-serif;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 400;
       text-transform: uppercase;
       color: #000;
@@ -131,11 +131,13 @@
   <div id="notfound">
     <div class="notfound">
       <div class="notfound-404">
-        <h1><span>Nginx is working!</span></h1>
+        <h1><span>Nginx + PHP is working!</span></h1>
       </div>
       <br /><br />
-      <h2>Running from container using basic html settings</h2>
-      <h3>loaded from: <strong>samples/index.html</strong></h3>
+      <h2>
+        <?php echo sprintf("running from container using php %s", PHP_VERSION); ?>
+      </h2>
+      <h3>loaded from: <strong>samples/public/index.php</strong></h3>
     </div>
   </div>
 </body>
