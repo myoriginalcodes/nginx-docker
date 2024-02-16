@@ -11,8 +11,8 @@ services:
         restart: unless-stopped
         working_dir: /application
         volumes:
-            - '${NGINX_APPLICATION_VOLUME_PHP_WEB_BUNDLE}:/application'
-            - '${NGIN_CONF_FILE_PHP_WEB_BUNDLE}:/etc/nginx/conf.d/default.conf'
+            - '${NGINX_APPLICATION_VOLUME_BUNDLE}:/application'
+            - '${NGIN_CONF_FILE_BUNDLE}:/etc/nginx/conf.d/default.conf'
             - '${NGINX_LOGS_VOLUME}:/var/log/nginx'
         ports:
             - "${NGINX_EXTERNAL_PORT}:80"
