@@ -1,0 +1,27 @@
+###############################################################################
+#                          Docker settings                                    #
+###############################################################################
+version: '3.9'
+
+services:
+
+    nginx:
+        container_name: ${NGINX_SERVER_NAME}
+        build: ./docker
+        restart: unless-stopped
+        working_dir: /application
+        volumes:
+            - '${NGINX_APPLICATION_VENDOR_FULLSTACK_BUNDLE_VOLUME}:/application'
+            - '${NGINX_BUILD_VENDOR_FULLSTACK_BUNDLE_VOLUME}:/build'
+            - '${NGIN_CONF_FILE_VENDOR_FULLSTACK_BUNDLE}:/etc/nginx/conf.d/default.conf'
+            - '${NGINX_LOGS_VENDOR_FULLSTACK_BUNDLE_VOLUME}:/var/log/nginx'
+        ports:
+            - "${NGINX_APPLICATION_VENDOR_FULLSTACK_EXTERNAL_PORT}:80"
+            - "${NGINX_BUILD_VENDOR_FULLSTACK_EXTERNAL_PORT}:8080"
+        networks:
+            - bundle
+
+networks:
+    bundle:
+      external: true
+      name: ${NGINX_NETWORK}
