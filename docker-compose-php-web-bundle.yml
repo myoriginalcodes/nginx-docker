@@ -11,9 +11,9 @@ services:
         restart: unless-stopped
         working_dir: /application
         volumes:
-            - './samples:/application'
-            - './docker/conf/php-web-bundle.conf:/etc/nginx/conf.d/default.conf'
-            - './storage/logs:/var/log/nginx'
+            - '${NGINX_APPLICATION_VOLUME_PHP_WEB_BUNDLE}:/application'
+            - '${NGIN_CONF_FILE_PHP_WEB_BUNDLE}:/etc/nginx/conf.d/default.conf'
+            - '${NGINX_LOGS_VOLUME}:/var/log/nginx'
         ports:
             - "${NGINX_EXTERNAL_PORT}:80"
         networks:
